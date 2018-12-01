@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Product>AdvancedStringBuilder</Product>
+		<VersionPrefixs>0.1.0</VersionPrefixs>
+		<TargetFrameworks>net40-client;net45;netstandard1.3;netstandard2.0</TargetFrameworks>
+		<OutputType>Library</OutputType>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<NoWarn>$(NoWarn);CS1591</NoWarn>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DisableDefaultResxToCsConversionTarget>true</DisableDefaultResxToCsConversionTarget>
+		<Description>Contains a simple implementation of the pool and the extension methods for string builder.</Description>
+		<PackageTags>StringBuilder Pooling Extensions</PackageTags>
+	</PropertyGroup>
+
+	<Import Project="../../build/common.props" />
+	<Import Project="../../build/net40-client-target.props" />
+	<Import Project="../../build/strong-name-signing.props" />
+	<Import Project="../../build/nuget-metadata.props" />
+
+	<ItemGroup>
+		<PackageReference Include="ResxToCs.MSBuild" Version="1.0.0-alpha5" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net40-client' ">
+		<PackageReference Include="PolyfillsForOldDotNet.System.Threading" Version="0.1.0" />
+	</ItemGroup>
+
+	<Target Name="СonvertResxToCs" BeforeTargets="BeforeCompile">
+		<ResxToCsTask InputDirectory="./Resources/" Namespace="$(RootNamespace).Resources" InternalAccessModifier="true" />
+	</Target>
+
+</Project>

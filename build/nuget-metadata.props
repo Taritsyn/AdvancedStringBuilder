@@ -1,0 +1,14 @@
+<Project>
+	<PropertyGroup>
+		<Title>$(Product)</Title>
+		<Authors>Andrey Taritsyn</Authors>
+		<PackageLicense>https://github.com/Taritsyn/AdvancedStringBuilder/blob/master/LICENSE.txt</PackageLicense>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageProjectUrl>https://github.com/Taritsyn/AdvancedStringBuilder</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Taritsyn/AdvancedStringBuilder</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<NeutralLanguage>en-US</NeutralLanguage>
+	</PropertyGroup>
+
+	<Import Project="nuget-common.props" />
+</Project>
