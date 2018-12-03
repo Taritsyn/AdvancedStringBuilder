@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<Title>$(Product)</Title>
 		<Authors>Andrey Taritsyn</Authors>
-		<PackageLicense>https://github.com/Taritsyn/AdvancedStringBuilder/blob/master/LICENSE.txt</PackageLicense>
+		<PackageLicenseUrl>https://github.com/Taritsyn/AdvancedStringBuilder/blob/master/LICENSE.txt</PackageLicenseUrl>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageProjectUrl>https://github.com/Taritsyn/AdvancedStringBuilder</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Taritsyn/AdvancedStringBuilder</RepositoryUrl>

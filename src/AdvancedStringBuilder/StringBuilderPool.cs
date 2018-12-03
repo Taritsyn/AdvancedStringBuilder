@@ -86,26 +86,26 @@ namespace AdvancedStringBuilder
 		}
 
 		/// <summary>
-		/// Retrieves a instance of string builder from the pool.
+		/// Retrieves a instance of <see cref="StringBuilder"/> from the pool.
 		/// </summary>
-		/// <returns>Instance of string builder.</returns>
+		/// <returns>Instance of <see cref="StringBuilder"/>.</returns>
 		public abstract StringBuilder Rent();
 
 		/// <summary>
-		/// Retrieves a instance of string builder with at least the given capacity from the pool.
+		/// Retrieves a instance of <see cref="StringBuilder"/> with at least the given capacity from the pool.
 		/// </summary>
 		/// <remarks>
 		/// If the capacity is less than or equal to our maximum capacity, then return builder from the pool.
 		/// Otherwise create a new string builder, that will just get discarded when released.
 		/// </remarks>
 		/// <param name="capacity">Capacity of string builder.</param>
-		/// <returns>Instance of string builder.</returns>
+		/// <returns>Instance of <see cref="StringBuilder"/>.</returns>
 		public abstract StringBuilder Rent(int capacity);
 
 		/// <summary>
-		/// Returns a instance of string builder to the pool.
+		/// Returns a instance of <see cref="StringBuilder"/> to the pool.
 		/// </summary>
-		/// <param name="builder">Instance of string builder.</param>
+		/// <param name="builder">Instance of <see cref="StringBuilder"/>.</param>
 		public abstract void Return(StringBuilder builder);
 	}
 }
