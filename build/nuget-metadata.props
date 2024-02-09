@@ -2,8 +2,7 @@
   <PropertyGroup>
     <Title>$(Product)</Title>
     <Authors>Andrey Taritsyn</Authors>
-    <PackageLicenseUrl>https://github.com/Taritsyn/AdvancedStringBuilder/blob/master/LICENSE.txt</PackageLicenseUrl>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Taritsyn/AdvancedStringBuilder</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Taritsyn/AdvancedStringBuilder</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -11,4 +10,12 @@
   </PropertyGroup>
 
   <Import Project="nuget-common.props" />
+
+  <ItemGroup>
+    <None Include="../../LICENSE.txt">
+      <PackagePath>/</PackagePath>
+      <Pack>true</Pack>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
 </Project>
