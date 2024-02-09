@@ -1,7 +1,7 @@
 <Project>
-	<PropertyGroup>
-		<Copyright>Copyright © 2018 Andrey Taritsyn</Copyright>
-		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-		<GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-	</PropertyGroup>
+  <PropertyGroup>
+    <Copyright>Copyright © 2018 Andrey Taritsyn</Copyright>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+  </PropertyGroup>
 </Project>
