@@ -1,6 +1,21 @@
 <Project>
   <PropertyGroup>
+    <Title>$(Product)</Title>
+    <Authors>Andrey Taritsyn</Authors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Taritsyn/AdvancedStringBuilder</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Taritsyn/AdvancedStringBuilder</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <NeutralLanguage>en-US</NeutralLanguage>
     <PackageOutputPath>../../nuget</PackageOutputPath>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../LICENSE.txt">
+      <PackagePath>/</PackagePath>
+      <Pack>true</Pack>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
 </Project>

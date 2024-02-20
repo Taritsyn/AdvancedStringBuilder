@@ -11,13 +11,14 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DisableDefaultResxToCsConversionTarget>true</DisableDefaultResxToCsConversionTarget>
     <Description>Contains a simple implementation of the pool and extension methods for string builder.</Description>
-    <PackageTags>StringBuilder Pooling Extensions</PackageTags>
+    <PackageTags>StringBuilder;Pooling;Extensions</PackageTags>
+
   </PropertyGroup>
 
   <Import Project="../../build/common.props" />
   <Import Project="../../build/net40-client-target.props" />
   <Import Project="../../build/strong-name-signing.props" />
-  <Import Project="../../build/nuget-metadata.props" />
+  <Import Project="../../build/nuget-common.props" />
 
   <ItemGroup>
     <PackageReference Include="ResxToCs.MSBuild" Version="1.0.0-alpha5" PrivateAssets="All" />
