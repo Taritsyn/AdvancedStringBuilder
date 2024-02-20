@@ -6,6 +6,9 @@
     <PackageProjectUrl>https://github.com/Taritsyn/AdvancedStringBuilder</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Taritsyn/AdvancedStringBuilder</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <NeutralLanguage>en-US</NeutralLanguage>
     <PackageOutputPath>../../nuget</PackageOutputPath>
     <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>

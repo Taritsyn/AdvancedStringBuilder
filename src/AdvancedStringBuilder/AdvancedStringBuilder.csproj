@@ -12,7 +12,7 @@
     <DisableDefaultResxToCsConversionTarget>true</DisableDefaultResxToCsConversionTarget>
     <Description>Contains a simple implementation of the pool and extension methods for string builder.</Description>
     <PackageTags>StringBuilder;Pooling;Extensions</PackageTags>
-
+    <PackageReleaseNotes>Enabled a SourceLink in NuGet package.</PackageReleaseNotes>
   </PropertyGroup>
 
   <Import Project="../../build/common.props" />
