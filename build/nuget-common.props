@@ -4,6 +4,7 @@
     <Authors>Andrey Taritsyn</Authors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Taritsyn/AdvancedStringBuilder</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/Taritsyn/AdvancedStringBuilder/master/images/AdvancedStringBuilder_Logo_128x128.png</PackageIconUrl>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/Taritsyn/AdvancedStringBuilder</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -26,5 +27,10 @@
       <Pack>true</Pack>
       <Visible>false</Visible>
     </None>
+
+    <Content Include="readme.txt">
+      <PackagePath>/</PackagePath>
+      <Pack>true</Pack>
+    </Content>
   </ItemGroup>
 </Project>
