@@ -19,4 +19,7 @@
   <Folder Name="/src/">
     <Project Path="src/AdvancedStringBuilder/AdvancedStringBuilder.csproj" />
   </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/AdvancedStringBuilder.Tests/AdvancedStringBuilder.Tests.csproj" />
+  </Folder>
 </Solution>
