@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="CHANGELOG.md" />
+    <File Path="global.json" />
+    <File Path="LICENSE.txt" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/build/">
+    <File Path="build/common.props" />
+    <File Path="build/Key.snk" />
+    <File Path="build/net40-client-target.props" />
+    <File Path="build/nuget-common.props" />
+    <File Path="build/strong-name-signing.props" />
+  </Folder>
+  <Folder Name="/images/">
+    <File Path="images/AdvancedStringBuilder_Logo_128x128.png" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/AdvancedStringBuilder/AdvancedStringBuilder.csproj" />
+  </Folder>
+</Solution>
