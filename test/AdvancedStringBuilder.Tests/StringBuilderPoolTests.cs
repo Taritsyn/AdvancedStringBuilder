@@ -21,7 +21,6 @@ namespace AdvancedStringBuilder.Tests
 			Assert.IsNotNull(pool);
 		}
 
-		[Theory]
 		[TestCase(10)]
 		public void CreatingInstanceOfPoolWithSize(int poolSize)
 		{
@@ -35,7 +34,6 @@ namespace AdvancedStringBuilder.Tests
 			Assert.IsNotNull(pool);
 		}
 
-		[Theory]
 		[TestCase(0)]
 		[TestCase(-1)]
 		public void CreatingInstanceOfPoolWithInvalidSize(int poolSize)
@@ -43,7 +41,6 @@ namespace AdvancedStringBuilder.Tests
 			Assert.Throws<ArgumentOutOfRangeException>(() => StringBuilderPool.Create(poolSize));
 		}
 
-		[Theory]
 		[TestCase(128, 4096)]
 		public void CreatingInstanceOfPoolWithBuilderCapacity(int initialBuilderCapacity,
 			int maxBuilderCapacity)
@@ -60,7 +57,6 @@ namespace AdvancedStringBuilder.Tests
 			Assert.AreEqual(initialBuilderCapacity, builder.Capacity);
 		}
 
-		[Theory]
 		[TestCase(0, 4096)]
 		[TestCase(-1, 4096)]
 		[TestCase(128, 0)]
@@ -77,7 +73,6 @@ namespace AdvancedStringBuilder.Tests
 				() => StringBuilderPool.Create(initialBuilderCapacity, maxBuilderCapacity));
 		}
 
-		[Theory]
 		[TestCase(100, 8192, 5)]
 		public void CreatingInstanceOfPoolWithBuilderCapacityAndSize(int initialBuilderCapacity,
 			int maxBuilderCapacity, int poolSize)
@@ -94,7 +89,6 @@ namespace AdvancedStringBuilder.Tests
 			Assert.AreEqual(initialBuilderCapacity, builder.Capacity);
 		}
 
-		[Theory]
 		[TestCase(0, 4096, 5)]
 		[TestCase(-1, 4096, 5)]
 		[TestCase(128, 0, 5)]
@@ -111,7 +105,6 @@ namespace AdvancedStringBuilder.Tests
 				() => StringBuilderPool.Create(initialBuilderCapacity, maxBuilderCapacity, poolSize));
 		}
 
-		[Theory]
 		[TestCase(128, 4096, 0)]
 		[TestCase(128, 4096, -1)]
 		public void CreatingInstanceOfPoolWithBuilderCapacityAndInvalidSize(int initialBuilderCapacity,
@@ -121,7 +114,6 @@ namespace AdvancedStringBuilder.Tests
 				() => StringBuilderPool.Create(initialBuilderCapacity, maxBuilderCapacity, poolSize));
 		}
 
-		[Theory]
 		[TestCase(0, 0, 0)]
 		[TestCase(-1, -1, -1)]
 		public void CreatingInstanceOfPoolWithInvalidBuilderCapacityAndInvalidSize(int initialBuilderCapacity,
