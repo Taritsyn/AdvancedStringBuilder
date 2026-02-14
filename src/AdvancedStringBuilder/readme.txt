@@ -17,7 +17,8 @@
    =============
    RELEASE NOTES
    =============
-   Performed a migration to the modern C# null/not-null checks.
+   1. Added a `Trim` extension method;
+   2. Performed a migration to the modern C# null/not-null checks.
 
    ============
    PROJECT SITE

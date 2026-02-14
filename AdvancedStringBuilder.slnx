@@ -16,6 +16,9 @@
   <Folder Name="/images/">
     <File Path="images/AdvancedStringBuilder_Logo_128x128.png" />
   </Folder>
+  <Folder Name="/licenses/">
+    <File Path="licenses/dotnet-runtime-license.txt" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/AdvancedStringBuilder/AdvancedStringBuilder.csproj" />
   </Folder>

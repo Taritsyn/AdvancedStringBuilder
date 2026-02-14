@@ -20,7 +20,8 @@
   <PropertyGroup>
     <Description>Contains a simple implementation of the pool and extension methods for string builder.</Description>
     <PackageTags>StringBuilder;Pooling;Extensions</PackageTags>
-    <PackageReleaseNotes>Performed a migration to the modern C# null/not-null checks.</PackageReleaseNotes>
+    <PackageReleaseNotes>1. Added a `Trim` extension method;
+2. Performed a migration to the modern C# null/not-null checks.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

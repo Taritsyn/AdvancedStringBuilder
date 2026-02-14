@@ -177,8 +177,29 @@ namespace AdvancedStringBuilder.Tests
 			Assert.AreEqual(targetOutput, output);
 		}
 
+		[TestCase("  Hello, World!  ", "Hello, World!")]
+		[TestCase("\r\nHi!\r\n", "Hi!")]
+		[TestCase("\t|\t", "|")]
+		[TestCase("      \r\n      ", "")]
+		[TestCase("      \t      ", "")]
+		[TestCase("      ", "")]
+		[TestCase("", "")]
+		public void Trim(string s, string expected)
+		{
+			// Arrange
+			var builder = new StringBuilder(s);
+
+			// Act
+			builder.Trim();
+			string output = builder.ToString();
+
+			// Assert
+			Assert.AreEqual(expected, output);
+		}
+
 		[TestCase("  Hello, World!  ", "Hello, World!  ")]
 		[TestCase("\r\nHi!\r\n", "Hi!\r\n")]
+		[TestCase("\t|\t", "|\t")]
 		[TestCase("      \r\n      ", "")]
 		[TestCase("      \t      ", "")]
 		[TestCase("      ", "")]
@@ -198,6 +219,7 @@ namespace AdvancedStringBuilder.Tests
 
 		[TestCase("  Hello, World!  ", "  Hello, World!")]
 		[TestCase("\r\nHi!\r\n", "\r\nHi!")]
+		[TestCase("\t|\t", "\t|")]
 		[TestCase("      \r\n      ", "")]
 		[TestCase("      \t      ", "")]
 		[TestCase("      ", "")]

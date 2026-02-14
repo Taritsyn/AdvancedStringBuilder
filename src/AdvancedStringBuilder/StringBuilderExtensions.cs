@@ -240,6 +240,23 @@ namespace AdvancedStringBuilder
 		}
 
 		/// <summary>
+		/// Removes the all leading and trailing white-space characters from the current <see cref="StringBuilder"/> instance.
+		/// </summary>
+		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
+		/// <returns>Instance of <see cref="StringBuilder"/> without leading and trailing white-space characters.</returns>
+		public static StringBuilder Trim(this StringBuilder source)
+		{
+			if (source is null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			TrimWhiteSpaceHelper(source, TrimType.Both);
+
+			return source;
+		}
+
+		/// <summary>
 		/// Removes the all leading white-space characters from the current <see cref="StringBuilder"/> instance.
 		/// </summary>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
@@ -251,29 +268,7 @@ namespace AdvancedStringBuilder
 				throw new ArgumentNullException(nameof(source));
 			}
 
-			int charCount = source.Length;
-			if (charCount == 0)
-			{
-				return source;
-			}
-
-			int charIndex = 0;
-
-			while (charIndex < charCount)
-			{
-				char charValue = source[charIndex];
-				if (!char.IsWhiteSpace(charValue))
-				{
-					break;
-				}
-
-				charIndex++;
-			}
-
-			if (charIndex > 0)
-			{
-				source.Remove(0, charIndex);
-			}
+			TrimWhiteSpaceHelper(source, TrimType.Head);
 
 			return source;
 		}
@@ -290,31 +285,72 @@ namespace AdvancedStringBuilder
 				throw new ArgumentNullException(nameof(source));
 			}
 
-			int charCount = source.Length;
-			if (charCount == 0)
-			{
-				return source;
-			}
-
-			int charIndex = charCount - 1;
-
-			while (charIndex >= 0)
-			{
-				char charValue = source[charIndex];
-				if (!char.IsWhiteSpace(charValue))
-				{
-					break;
-				}
-
-				charIndex--;
-			}
-
-			if (charIndex < source.Length - 1)
-			{
-				source.Length = charIndex + 1;
-			}
+			TrimWhiteSpaceHelper(source, TrimType.Tail);
 
 			return source;
+		}
+
+		private static void TrimWhiteSpaceHelper(StringBuilder sb, TrimType trimType)
+		{
+			int charCount = sb.Length;
+			if (charCount == 0)
+			{
+				return;
+			}
+
+			int lastCharIndex = charCount - 1;
+			int leftCharIndex = 0; // position of the first non-trimmed character on the left
+			int rightCharIndex = lastCharIndex; // position of the first non-trimmed character on the right
+
+			if ((trimType & TrimType.Head) == TrimType.Head)
+			{
+				while (leftCharIndex < charCount)
+				{
+					char charValue = sb[leftCharIndex];
+					if (!char.IsWhiteSpace(charValue))
+					{
+						break;
+					}
+
+					leftCharIndex++;
+				}
+
+				if (leftCharIndex > lastCharIndex)
+				{
+					sb.Clear();
+					return;
+				}
+			}
+
+			if ((trimType & TrimType.Tail) == TrimType.Tail)
+			{
+				while (rightCharIndex >= 0)
+				{
+					char charValue = sb[rightCharIndex];
+					if (!char.IsWhiteSpace(charValue))
+					{
+						break;
+					}
+
+					rightCharIndex--;
+				}
+
+				if (rightCharIndex < 0)
+				{
+					sb.Clear();
+					return;
+				}
+			}
+
+			if (rightCharIndex < lastCharIndex)
+			{
+				sb.Length = rightCharIndex + 1;
+			}
+
+			if (leftCharIndex > 0)
+			{
+				sb.Remove(0, leftCharIndex);
+			}
 		}
 	}
 }
