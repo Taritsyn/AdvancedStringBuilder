@@ -21,7 +21,7 @@ namespace AdvancedStringBuilder
 		/// of <paramref name="arg0"/>.</returns>
 		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object arg0)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}
@@ -49,7 +49,7 @@ namespace AdvancedStringBuilder
 		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object arg0,
 			object arg1)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}
@@ -78,7 +78,7 @@ namespace AdvancedStringBuilder
 		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object arg0,
 			object arg1, object arg2)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}
@@ -106,7 +106,7 @@ namespace AdvancedStringBuilder
 		public static StringBuilder AppendFormatLine(this StringBuilder source, string format,
 			params object[] args)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}
@@ -135,7 +135,7 @@ namespace AdvancedStringBuilder
 		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider provider,
 			string format, object arg0)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}
@@ -165,7 +165,7 @@ namespace AdvancedStringBuilder
 		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider provider,
 			string format, object arg0, object arg1)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}
@@ -196,7 +196,7 @@ namespace AdvancedStringBuilder
 		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider provider,
 			string format, object arg0, object arg1, object arg2)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}
@@ -226,7 +226,7 @@ namespace AdvancedStringBuilder
 		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider provider,
 			string format, params object[] args)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}
@@ -246,7 +246,7 @@ namespace AdvancedStringBuilder
 		/// <returns>Instance of <see cref="StringBuilder"/> without leading white-space characters.</returns>
 		public static StringBuilder TrimStart(this StringBuilder source)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}
@@ -285,7 +285,7 @@ namespace AdvancedStringBuilder
 		/// <returns>Instance of <see cref="StringBuilder"/> without trailing white-space characters.</returns>
 		public static StringBuilder TrimEnd(this StringBuilder source)
 		{
-			if (source == null)
+			if (source is null)
 			{
 				throw new ArgumentNullException(nameof(source));
 			}

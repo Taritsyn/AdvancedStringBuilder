@@ -129,7 +129,7 @@ namespace AdvancedStringBuilder
 			// Examine the first builder.
 			// If that fails, then `RentViaScan` method will look at the remaining builders.
 			StringBuilder builder = _firstBuilder;
-			if (builder == null || builder != Interlocked.CompareExchange(ref _firstBuilder, null, builder))
+			if (builder is null || builder != Interlocked.CompareExchange(ref _firstBuilder, null, builder))
 			{
 				builder = RentViaScan();
 			}
@@ -156,7 +156,7 @@ namespace AdvancedStringBuilder
 			for (int builderIndex = 0; builderIndex < builderCount; builderIndex++)
 			{
 				StringBuilder builder = builders[builderIndex];
-				if (builder != null)
+				if (builder is not null)
 				{
 					if (builder == Interlocked.CompareExchange(ref builders[builderIndex], null, builder))
 					{
@@ -170,12 +170,12 @@ namespace AdvancedStringBuilder
 
 		public override void Return(StringBuilder builder)
 		{
-			if (builder == null || builder.Capacity > _maxBuilderCapacity)
+			if (builder is null || builder.Capacity > _maxBuilderCapacity)
 			{
 				return;
 			}
 
-			if (_firstBuilder == null)
+			if (_firstBuilder is null)
 			{
 				builder.Clear();
 				_firstBuilder = builder;
@@ -194,7 +194,7 @@ namespace AdvancedStringBuilder
 
 			for (int builderIndex = 0; builderIndex < builderCount; builderIndex++)
 			{
-				if (builders[builderIndex] == null)
+				if (builders[builderIndex] is null)
 				{
 					builder.Clear();
 					builders[builderIndex] = builder;

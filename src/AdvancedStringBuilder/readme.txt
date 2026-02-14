@@ -17,7 +17,7 @@
    =============
    RELEASE NOTES
    =============
-   Enabled a SourceLink in NuGet package.
+   Performed a migration to the modern C# null/not-null checks.
 
    ============
    PROJECT SITE

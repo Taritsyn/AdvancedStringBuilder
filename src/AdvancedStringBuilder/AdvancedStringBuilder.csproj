@@ -20,7 +20,7 @@
   <PropertyGroup>
     <Description>Contains a simple implementation of the pool and extension methods for string builder.</Description>
     <PackageTags>StringBuilder;Pooling;Extensions</PackageTags>
-    <PackageReleaseNotes>Enabled a SourceLink in NuGet package.</PackageReleaseNotes>
+    <PackageReleaseNotes>Performed a migration to the modern C# null/not-null checks.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net40-client' ">
-    <PackageReference Include="PolyfillsForOldDotNet.System.Threading" Version="0.1.2" />
+    <PackageReference Include="PolyfillsForOldDotNet.System.Threading" Version="0.1.3" />
   </ItemGroup>
 
   <Target Name="СonvertResxToCs" BeforeTargets="BeforeCompile">
