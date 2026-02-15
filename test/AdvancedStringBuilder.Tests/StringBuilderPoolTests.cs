@@ -12,7 +12,7 @@ namespace AdvancedStringBuilder.Tests
 		public void CreatingInstanceOfPool()
 		{
 			// Arrange
-			StringBuilderPool pool = null;
+			StringBuilderPool? pool = null;
 
 			// Act
 			pool = StringBuilderPool.Create();
@@ -25,7 +25,7 @@ namespace AdvancedStringBuilder.Tests
 		public void CreatingInstanceOfPoolWithSize(int poolSize)
 		{
 			// Arrange
-			StringBuilderPool pool = null;
+			StringBuilderPool? pool = null;
 
 			// Act
 			pool = StringBuilderPool.Create(poolSize);
@@ -46,7 +46,7 @@ namespace AdvancedStringBuilder.Tests
 			int maxBuilderCapacity)
 		{
 			// Arrange
-			StringBuilderPool pool = null;
+			StringBuilderPool? pool = null;
 
 			// Act
 			pool = StringBuilderPool.Create(initialBuilderCapacity, maxBuilderCapacity);
@@ -78,7 +78,7 @@ namespace AdvancedStringBuilder.Tests
 			int maxBuilderCapacity, int poolSize)
 		{
 			// Arrange
-			StringBuilderPool pool = null;
+			StringBuilderPool? pool = null;
 
 			// Act
 			pool = StringBuilderPool.Create(initialBuilderCapacity, maxBuilderCapacity, poolSize);
@@ -127,7 +127,7 @@ namespace AdvancedStringBuilder.Tests
 		public void CreatingSharedInstanceOfPoolOnFirstCall()
 		{
 			// Arrange
-			StringBuilderPool pool = null;
+			StringBuilderPool? pool = null;
 
 			// Act
 			pool = StringBuilderPool.Shared;

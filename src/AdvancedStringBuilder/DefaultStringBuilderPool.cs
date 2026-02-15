@@ -44,12 +44,12 @@ namespace AdvancedStringBuilder
 		/// The first builder is stored in a dedicated field, because we expect to be able to satisfy
 		/// most requests from it.
 		/// </remarks>
-		private StringBuilder _firstBuilder;
+		private StringBuilder? _firstBuilder;
 
 		/// <summary>
 		/// Array of the retained builders.
 		/// </summary>
-		private readonly StringBuilder[] _builders;
+		private readonly StringBuilder?[] _builders;
 
 
 		/// <summary>
@@ -128,7 +128,7 @@ namespace AdvancedStringBuilder
 		{
 			// Examine the first builder.
 			// If that fails, then `RentViaScan` method will look at the remaining builders.
-			StringBuilder builder = _firstBuilder;
+			StringBuilder? builder = _firstBuilder;
 			if (builder is null || builder != Interlocked.CompareExchange(ref _firstBuilder, null, builder))
 			{
 				builder = RentViaScan();
@@ -150,12 +150,12 @@ namespace AdvancedStringBuilder
 		[MethodImpl((MethodImplOptions)256 /* AggressiveInlining */)]
 		private StringBuilder RentViaScan()
 		{
-			StringBuilder[] builders = _builders;
+			StringBuilder?[] builders = _builders;
 			int builderCount = builders.Length;
 
 			for (int builderIndex = 0; builderIndex < builderCount; builderIndex++)
 			{
-				StringBuilder builder = builders[builderIndex];
+				StringBuilder? builder = builders[builderIndex];
 				if (builder is not null)
 				{
 					if (builder == Interlocked.CompareExchange(ref builders[builderIndex], null, builder))
@@ -189,7 +189,7 @@ namespace AdvancedStringBuilder
 		[MethodImpl((MethodImplOptions)256 /* AggressiveInlining */)]
 		private void ReturnViaScan(StringBuilder builder)
 		{
-			StringBuilder[] builders = _builders;
+			StringBuilder?[] builders = _builders;
 			int builderCount = builders.Length;
 
 			for (int builderIndex = 0; builderIndex < builderCount; builderIndex++)

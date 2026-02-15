@@ -19,7 +19,12 @@ namespace AdvancedStringBuilder
 		/// <returns>A reference to this instance with <paramref name="format"/> and default line terminator
 		/// appended. Each format item in <paramref name="format"/> is replaced by the string representation
 		/// of <paramref name="arg0"/>.</returns>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object arg0)
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
+		/// format item is less than 0 (zero), or greater than or equal to 1 (one).</exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
+		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object? arg0)
 		{
 			if (source is null)
 			{
@@ -46,8 +51,13 @@ namespace AdvancedStringBuilder
 		/// <returns>A reference to this instance with <paramref name="format"/> and default line terminator
 		/// appended. Each format item in <paramref name="format"/> is replaced by the string representation
 		/// of the corresponding object argument.</returns>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object arg0,
-			object arg1)
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid.  -or- The index of a
+		/// format item is less than 0 (zero), or greater than or equal to 2 (two).</exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
+		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object? arg0,
+			object? arg1)
 		{
 			if (source is null)
 			{
@@ -75,8 +85,13 @@ namespace AdvancedStringBuilder
 		/// <returns>A reference to this instance with <paramref name="format"/> and default line terminator
 		/// appended. Each format item in <paramref name="format"/> is replaced by the string representation
 		/// of the corresponding object argument.</returns>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object arg0,
-			object arg1, object arg2)
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
+		/// format item is less than 0 (zero), or greater than or equal to 3 (three).</exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
+		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object? arg0,
+			object? arg1, object? arg2)
 		{
 			if (source is null)
 			{
@@ -103,8 +118,14 @@ namespace AdvancedStringBuilder
 		/// <returns>A reference to this instance with <paramref name="format"/> and default line terminator
 		/// appended. Each format item in <paramref name="format"/> is replaced by the string representation
 		/// of the corresponding object argument.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
+		/// format item is less than 0 (zero), or greater than or equal to the length of the args array.
+		/// </exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
 		public static StringBuilder AppendFormatLine(this StringBuilder source, string format,
-			params object[] args)
+			params object?[] args)
 		{
 			if (source is null)
 			{
@@ -132,8 +153,13 @@ namespace AdvancedStringBuilder
 		/// operation, this instance contains any data that existed before the operation, suffixed by a copy
 		/// of <paramref name="format"/> in which any format specification is replaced by the string
 		/// representation of <paramref name="arg0"/>, and default line terminator.</returns>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider provider,
-			string format, object arg0)
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
+		/// format item is less than 0 (zero), or greater than or equal to 1 (one).</exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
+		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider? provider,
+			string format, object? arg0)
 		{
 			if (source is null)
 			{
@@ -162,8 +188,13 @@ namespace AdvancedStringBuilder
 		/// operation, this instance contains any data that existed before the operation, suffixed by a copy
 		/// of <paramref name="format"/> where any format specification is replaced by the string representation
 		/// of the corresponding object argument, and default line terminator.</returns>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider provider,
-			string format, object arg0, object arg1)
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
+		/// format item is less than 0 (zero), or greater than or equal to 2 (two).</exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
+		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider? provider,
+			string format, object? arg0, object? arg1)
 		{
 			if (source is null)
 			{
@@ -193,8 +224,13 @@ namespace AdvancedStringBuilder
 		/// operation, this instance contains any data that existed before the operation, suffixed by a copy
 		/// of <paramref name="format"/> where any format specification is replaced by the string representation
 		/// of the corresponding object argument, and default line terminator.</returns>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider provider,
-			string format, object arg0, object arg1, object arg2)
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
+		/// format item is less than 0 (zero), or greater than or equal to 3 (three).</exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
+		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider? provider,
+			string format, object? arg0, object? arg1, object? arg2)
 		{
 			if (source is null)
 			{
@@ -223,8 +259,14 @@ namespace AdvancedStringBuilder
 		/// operation, this instance contains any data that existed before the operation, suffixed by a copy
 		/// of <paramref name="format"/> where any format specification is replaced by the string representation
 		/// of the corresponding object argument, and default line terminator.</returns>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider provider,
-			string format, params object[] args)
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
+		/// format item is less than 0 (zero), or greater than or equal to the length of the args array.
+		/// </exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
+		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider? provider,
+			string format, params object?[] args)
 		{
 			if (source is null)
 			{

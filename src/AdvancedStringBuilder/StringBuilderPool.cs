@@ -16,7 +16,7 @@ namespace AdvancedStringBuilder
 		/// <summary>
 		/// The lazily-initialized shared pool instance.
 		/// </summary>
-		private static StringBuilderPool s_sharedInstance = null;
+		private static StringBuilderPool? s_sharedInstance = null;
 
 		/// <summary>
 		/// Retrieves a shared <see cref="StringBuilderPool"/> instance.
