@@ -19,7 +19,8 @@
    =============
    1. Added a `Trim` extension method;
    2. Performed a migration to the modern C# null/not-null checks;
-   3. Added support for nullable reference types.
+   3. Added support for nullable reference types;
+   4. Added support for .NET 8.
 
    ============
    PROJECT SITE

@@ -10,7 +10,7 @@ namespace AdvancedStringBuilder.Tests
 	public class StringBuilderExtensionsTests
 	{
 		[Test]
-		public void AppendFormatLineWithOneArgument()
+		public void AppendFormatLineWithFormatStringAndOneArgument()
 		{
 			// Arrange
 			var builder = new StringBuilder("Hello");
@@ -29,7 +29,7 @@ namespace AdvancedStringBuilder.Tests
 		}
 
 		[Test]
-		public void AppendFormatLineWithTwoArguments()
+		public void AppendFormatLineWithFormatStringAndTwoArguments()
 		{
 			// Arrange
 			var builder = new StringBuilder("Hello");
@@ -49,7 +49,7 @@ namespace AdvancedStringBuilder.Tests
 		}
 
 		[Test]
-		public void AppendFormatLineWithThreeArguments()
+		public void AppendFormatLineWithFormatStringAndThreeArguments()
 		{
 			// Arrange
 			var builder = new StringBuilder("Hello");
@@ -70,7 +70,7 @@ namespace AdvancedStringBuilder.Tests
 		}
 
 		[Test]
-		public void AppendFormatLineWithFourArguments()
+		public void AppendFormatLineWithFormatStringAndFourArguments()
 		{
 			// Arrange
 			var builder = new StringBuilder("Hello");
@@ -92,7 +92,7 @@ namespace AdvancedStringBuilder.Tests
 		}
 
 		[Test]
-		public void AppendFormatLineWithProviderAndOneArgument()
+		public void AppendFormatLineWithProviderAndFormatStringAndOneArgument()
 		{
 			// Arrange
 			var builder = new StringBuilder();
@@ -112,7 +112,7 @@ namespace AdvancedStringBuilder.Tests
 		}
 
 		[Test]
-		public void AppendFormatLineWithProviderAndTwoArguments()
+		public void AppendFormatLineWithProviderAndFormatStringAndTwoArguments()
 		{
 			// Arrange
 			var builder = new StringBuilder();
@@ -133,7 +133,7 @@ namespace AdvancedStringBuilder.Tests
 		}
 
 		[Test]
-		public void AppendFormatLineWithProviderAndThreeArguments()
+		public void AppendFormatLineWithProviderAndFormatStringAndThreeArguments()
 		{
 			// Arrange
 			var builder = new StringBuilder();
@@ -155,7 +155,7 @@ namespace AdvancedStringBuilder.Tests
 		}
 
 		[Test]
-		public void AppendFormatLineWithProviderAndFourArguments()
+		public void AppendFormatLineWithProviderAndFormatStringAndFourArguments()
 		{
 			// Arrange
 			var builder = new StringBuilder();
@@ -176,6 +176,114 @@ namespace AdvancedStringBuilder.Tests
 			// Assert
 			Assert.AreEqual(targetOutput, output);
 		}
+#if NET8_0_OR_GREATER
+
+		[Test]
+		public void AppendFormatLineWithProviderAndFormatCompositeAndOneArgument()
+		{
+			// Arrange
+			var builder = new StringBuilder();
+
+			IFormatProvider provider = CultureInfo.InvariantCulture;
+			CompositeFormat format = CompositeFormat.Parse("{0}");
+			int arg0 = 1;
+
+			string targetOutput = "1" + Environment.NewLine;
+
+			// Act
+			builder.AppendFormatLine(provider, format, arg0);
+			string output = builder.ToString();
+
+			// Assert
+			Assert.AreEqual(targetOutput, output);
+		}
+
+		[Test]
+		public void AppendFormatLineWithProviderAndFormatCompositeAndTwoArguments()
+		{
+			// Arrange
+			var builder = new StringBuilder();
+
+			IFormatProvider provider = CultureInfo.InvariantCulture;
+			CompositeFormat format = CompositeFormat.Parse("{0}, {1}");
+			int arg0 = 1;
+			long arg1 = 2;
+
+			string targetOutput = "1, 2" + Environment.NewLine;
+
+			// Act
+			builder.AppendFormatLine(provider, format, arg0, arg1);
+			string output = builder.ToString();
+
+			// Assert
+			Assert.AreEqual(targetOutput, output);
+		}
+
+		[Test]
+		public void AppendFormatLineWithProviderAndFormatCompositeAndThreeArguments()
+		{
+			// Arrange
+			var builder = new StringBuilder();
+
+			IFormatProvider provider = CultureInfo.InvariantCulture;
+			CompositeFormat format = CompositeFormat.Parse("{0}, {1}, {2}");
+			int arg0 = 1;
+			long arg1 = 2;
+			decimal arg2 = 3;
+
+			string targetOutput = "1, 2, 3" + Environment.NewLine;
+
+			// Act
+			builder.AppendFormatLine(provider, format, arg0, arg1, arg2);
+			string output = builder.ToString();
+
+			// Assert
+			Assert.AreEqual(targetOutput, output);
+		}
+
+		[Test]
+		public void AppendFormatLineWithProviderAndFormatCompositeAndFourArguments()
+		{
+			// Arrange
+			var builder = new StringBuilder();
+
+			IFormatProvider provider = CultureInfo.InvariantCulture;
+			CompositeFormat format = CompositeFormat.Parse("{0}, {1}, {2}, {3}");
+			int arg0 = 1;
+			long arg1 = 2;
+			decimal arg2 = 3;
+			double arg3 = 4;
+
+			string targetOutput = "1, 2, 3, 4" + Environment.NewLine;
+
+			// Act
+			builder.AppendFormatLine(provider, format, arg0, arg1, arg2, arg3);
+			string output = builder.ToString();
+
+			// Assert
+			Assert.AreEqual(targetOutput, output);
+		}
+
+		[Test]
+		public void AppendFormatLineWithProviderAndFormatCompositeAndManyArguments()
+		{
+			// Arrange
+			var builder = new StringBuilder();
+
+			IFormatProvider provider = CultureInfo.InvariantCulture;
+			CompositeFormat format = CompositeFormat.Parse("{0}, {1}, {2}, {3}, {4}");
+			object[] args = [1, 2, 3, 4, "..."];
+
+			string targetOutput = "1, 2, 3, 4, ..." + Environment.NewLine;
+
+			// Act
+			builder.AppendFormatLine(provider, format, args);
+			string output = builder.ToString();
+
+			// Assert
+			Assert.AreEqual(targetOutput, output);
+		}
+#endif
 
 		[TestCase("  Hello, World!  ", "Hello, World!")]
 		[TestCase("\r\nHi!\r\n", "Hi!")]

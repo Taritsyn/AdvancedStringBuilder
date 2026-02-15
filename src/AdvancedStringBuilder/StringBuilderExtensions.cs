@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Text;
+#if NET8_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
 
 namespace AdvancedStringBuilder
 {
@@ -24,7 +27,14 @@ namespace AdvancedStringBuilder
 		/// format item is less than 0 (zero), or greater than or equal to 1 (one).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object? arg0)
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+#if NET8_0_OR_GREATER
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)]
+#endif
+			string format,
+			object? arg0
+		)
 		{
 			if (source is null)
 			{
@@ -56,8 +66,15 @@ namespace AdvancedStringBuilder
 		/// format item is less than 0 (zero), or greater than or equal to 2 (two).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object? arg0,
-			object? arg1)
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+#if NET8_0_OR_GREATER
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)]
+#endif
+			string format,
+			object? arg0,
+			object? arg1
+		)
 		{
 			if (source is null)
 			{
@@ -90,8 +107,16 @@ namespace AdvancedStringBuilder
 		/// format item is less than 0 (zero), or greater than or equal to 3 (three).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, string format, object? arg0,
-			object? arg1, object? arg2)
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+#if NET8_0_OR_GREATER
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)]
+#endif
+			string format,
+			object? arg0,
+			object? arg1,
+			object? arg2
+		)
 		{
 			if (source is null)
 			{
@@ -124,8 +149,14 @@ namespace AdvancedStringBuilder
 		/// </exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, string format,
-			params object?[] args)
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+#if NET8_0_OR_GREATER
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)]
+#endif
+			string format,
+			params object?[] args
+		)
 		{
 			if (source is null)
 			{
@@ -158,8 +189,15 @@ namespace AdvancedStringBuilder
 		/// format item is less than 0 (zero), or greater than or equal to 1 (one).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider? provider,
-			string format, object? arg0)
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+			IFormatProvider? provider,
+#if NET8_0_OR_GREATER
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)]
+#endif
+			string format,
+			object? arg0
+		)
 		{
 			if (source is null)
 			{
@@ -193,8 +231,16 @@ namespace AdvancedStringBuilder
 		/// format item is less than 0 (zero), or greater than or equal to 2 (two).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider? provider,
-			string format, object? arg0, object? arg1)
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+			IFormatProvider? provider,
+#if NET8_0_OR_GREATER
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)]
+#endif
+			string format,
+			object? arg0,
+			object? arg1
+		)
 		{
 			if (source is null)
 			{
@@ -229,8 +275,17 @@ namespace AdvancedStringBuilder
 		/// format item is less than 0 (zero), or greater than or equal to 3 (three).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider? provider,
-			string format, object? arg0, object? arg1, object? arg2)
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+			IFormatProvider? provider,
+#if NET8_0_OR_GREATER
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)]
+#endif
+			string format,
+			object? arg0,
+			object? arg1,
+			object? arg2
+		)
 		{
 			if (source is null)
 			{
@@ -265,8 +320,15 @@ namespace AdvancedStringBuilder
 		/// </exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
-		public static StringBuilder AppendFormatLine(this StringBuilder source, IFormatProvider? provider,
-			string format, params object?[] args)
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+			IFormatProvider? provider,
+#if NET8_0_OR_GREATER
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)]
+#endif
+			string format,
+			params object?[] args
+		)
 		{
 			if (source is null)
 			{
@@ -280,6 +342,186 @@ namespace AdvancedStringBuilder
 
 			return source;
 		}
+#if NET8_0_OR_GREATER
+
+		/// <summary>
+		/// Appends the string returned by processing a composite format string, which contains zero or more
+		/// format items, with default line terminator to this instance. Each format item is replaced by the
+		/// string representation of any of the arguments using a specified format provider.
+		/// </summary>
+		/// <typeparam name="TArg0">The type of the first object to format.</typeparam>
+		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
+		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
+		/// <param name="format">A <see cref="CompositeFormat"/>.</param>
+		/// <param name="arg0">The first object to format.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException">The index of a format item is greater than or equal to the
+		/// number of supplied arguments.</exception>
+		public static StringBuilder AppendFormatLine<TArg0>(
+			this StringBuilder source,
+			IFormatProvider? provider,
+			CompositeFormat format,
+			TArg0 arg0
+		)
+		{
+			if (source is null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			source
+				.AppendFormat(provider, format, arg0)
+				.AppendLine()
+				;
+
+			return source;
+		}
+
+		/// <summary>
+		/// Appends the string returned by processing a composite format string, which contains zero or more
+		/// format items, with default line terminator to this instance. Each format item is replaced by the
+		/// string representation of any of the arguments using a specified format provider.
+		/// </summary>
+		/// <typeparam name="TArg0">The type of the first object to format.</typeparam>
+		/// <typeparam name="TArg1">The type of the second object to format.</typeparam>
+		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
+		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
+		/// <param name="format">A <see cref="CompositeFormat"/>.</param>
+		/// <param name="arg0">The first object to format.</param>
+		/// <param name="arg1">The second object to format.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException">The index of a format item is greater than or equal to the
+		/// number of supplied arguments.</exception>
+		public static StringBuilder AppendFormatLine<TArg0, TArg1>(
+			this StringBuilder source,
+			IFormatProvider? provider,
+			CompositeFormat format,
+			TArg0 arg0,
+			TArg1 arg1
+		)
+		{
+			if (source is null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			source
+				.AppendFormat(provider, format, arg0, arg1)
+				.AppendLine()
+				;
+
+			return source;
+		}
+
+		/// <summary>
+		/// Appends the string returned by processing a composite format string, which contains zero or more
+		/// format items, with default line terminator to this instance. Each format item is replaced by the
+		/// string representation of any of the arguments using a specified format provider.
+		/// </summary>
+		/// <typeparam name="TArg0">The type of the first object to format.</typeparam>
+		/// <typeparam name="TArg1">The type of the second object to format.</typeparam>
+		/// <typeparam name="TArg2">The type of the third object to format.</typeparam>
+		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
+		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
+		/// <param name="format">A <see cref="CompositeFormat"/>.</param>
+		/// <param name="arg0">The first object to format.</param>
+		/// <param name="arg1">The second object to format.</param>
+		/// <param name="arg2">The third object to format.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException">The index of a format item is greater than or equal to the
+		/// number of supplied arguments.</exception>
+		public static StringBuilder AppendFormatLine<TArg0, TArg1, TArg2>(
+			this StringBuilder source,
+			IFormatProvider? provider,
+			CompositeFormat format,
+			TArg0 arg0,
+			TArg1 arg1,
+			TArg2 arg2
+		)
+		{
+			if (source is null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			source
+				.AppendFormat(provider, format, arg0, arg1, arg2)
+				.AppendLine()
+				;
+
+			return source;
+		}
+
+		/// <summary>
+		/// Appends the string returned by processing a composite format string, which contains zero or more
+		/// format items, with default line terminator to this instance. Each format item is replaced by the
+		/// string representation of any of the arguments using a specified format provider.
+		/// </summary>
+		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
+		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
+		/// <param name="format">A <see cref="CompositeFormat"/>.</param>
+		/// <param name="args">An array of objects to format.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="args"/> is null.</exception>
+		/// <exception cref="FormatException">The index of a format item is greater than or equal to the
+		/// number of supplied arguments.</exception>
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+			IFormatProvider? provider,
+			CompositeFormat format,
+			params object?[] args
+		)
+		{
+			if (source is null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			source
+				.AppendFormat(provider, format, args)
+				.AppendLine()
+				;
+
+			return source;
+		}
+
+		/// <summary>
+		/// Appends the string returned by processing a composite format string, which contains zero or more
+		/// format items, with default line terminator to this instance. Each format item is replaced by the
+		/// string representation of any of the arguments using a specified format provider.
+		/// </summary>
+		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
+		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
+		/// <param name="format">A <see cref="CompositeFormat"/>.</param>
+		/// <param name="args">A span of objects to format.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException">The index of a format item is greater than or equal to the
+		/// number of supplied arguments.</exception>
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+			IFormatProvider? provider,
+			CompositeFormat format,
+			params ReadOnlySpan<object?> args
+		)
+		{
+			if (source is null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			source
+				.AppendFormat(provider, format, args)
+				.AppendLine()
+				;
+
+			return source;
+		}
+#endif
 
 		/// <summary>
 		/// Removes the all leading and trailing white-space characters from the current <see cref="StringBuilder"/> instance.

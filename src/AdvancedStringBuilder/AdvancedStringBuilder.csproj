@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Product>AdvancedStringBuilder</Product>
     <VersionPrefix>0.1.1</VersionPrefix>
-    <TargetFrameworks>net40-client;net45;netstandard1.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net40-client;net45;netstandard1.0;netstandard2.0;net8.0</TargetFrameworks>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.0' ">1.6.0</NetStandardImplicitPackageVersion>
     <OutputType>Library</OutputType>
     <Nullable>enable</Nullable>
@@ -23,7 +23,8 @@
     <PackageTags>StringBuilder;Pooling;Extensions</PackageTags>
     <PackageReleaseNotes>1. Added a `Trim` extension method;
 2. Performed a migration to the modern C# null/not-null checks;
-3. Added support for nullable reference types.</PackageReleaseNotes>
+3. Added support for nullable reference types;
+4. Added support for .NET 8.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
