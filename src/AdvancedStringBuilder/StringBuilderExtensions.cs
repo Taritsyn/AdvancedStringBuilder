@@ -23,8 +23,9 @@ namespace AdvancedStringBuilder
 		/// appended. Each format item in <paramref name="format"/> is replaced by the string representation
 		/// of <paramref name="arg0"/>.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
-		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
-		/// format item is less than 0 (zero), or greater than or equal to 1 (one).</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to 1 (one).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
 		public static StringBuilder AppendFormatLine(
@@ -51,8 +52,8 @@ namespace AdvancedStringBuilder
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of either of two arguments.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of either of two arguments.
 		/// </summary>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
 		/// <param name="format">A composite format string.</param>
@@ -62,8 +63,9 @@ namespace AdvancedStringBuilder
 		/// appended. Each format item in <paramref name="format"/> is replaced by the string representation
 		/// of the corresponding object argument.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
-		/// <exception cref="FormatException"><paramref name="format"/> is invalid.  -or- The index of a
-		/// format item is less than 0 (zero), or greater than or equal to 2 (two).</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to 2 (two).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
 		public static StringBuilder AppendFormatLine(
@@ -91,8 +93,8 @@ namespace AdvancedStringBuilder
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of either of three arguments.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of either of three arguments.
 		/// </summary>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
 		/// <param name="format">A composite format string.</param>
@@ -103,8 +105,9 @@ namespace AdvancedStringBuilder
 		/// appended. Each format item in <paramref name="format"/> is replaced by the string representation
 		/// of the corresponding object argument.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
-		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
-		/// format item is less than 0 (zero), or greater than or equal to 3 (three).</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to 3 (three).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
 		public static StringBuilder AppendFormatLine(
@@ -144,9 +147,10 @@ namespace AdvancedStringBuilder
 		/// appended. Each format item in <paramref name="format"/> is replaced by the string representation
 		/// of the corresponding object argument.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
-		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
-		/// format item is less than 0 (zero), or greater than or equal to the length of the args array.
-		/// </exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to the length of
+		/// the args array.</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
 		public static StringBuilder AppendFormatLine(
@@ -170,11 +174,52 @@ namespace AdvancedStringBuilder
 
 			return source;
 		}
+#if NET9_0_OR_GREATER
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of a single argument using a specified format provider.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of a corresponding argument in a
+		/// parameter span.
+		/// </summary>
+		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
+		/// <param name="format">A composite format string.</param>
+		/// <param name="args">A span of objects to format.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException">
+		/// <paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to the length of
+		/// the <paramref name="args"/> span.
+		/// </exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format,
+			params ReadOnlySpan<object?> args
+		)
+		{
+			if (source is null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			source
+				.AppendFormat(format, args)
+				.AppendLine()
+				;
+
+			return source;
+		}
+#endif
+
+		/// <summary>
+		/// Appends the string returned by processing a composite format string, which contains zero or more
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of a single argument using a specified
+		/// format provider.
 		/// </summary>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
 		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
@@ -185,8 +230,9 @@ namespace AdvancedStringBuilder
 		/// of <paramref name="format"/> in which any format specification is replaced by the string
 		/// representation of <paramref name="arg0"/>, and default line terminator.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
-		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
-		/// format item is less than 0 (zero), or greater than or equal to 1 (one).</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to 1 (one).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
 		public static StringBuilder AppendFormatLine(
@@ -214,8 +260,9 @@ namespace AdvancedStringBuilder
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of either of two arguments using a specified format provider.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of either of two arguments using a
+		/// specified format provider.
 		/// </summary>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
 		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
@@ -227,8 +274,9 @@ namespace AdvancedStringBuilder
 		/// of <paramref name="format"/> where any format specification is replaced by the string representation
 		/// of the corresponding object argument, and default line terminator.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
-		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
-		/// format item is less than 0 (zero), or greater than or equal to 2 (two).</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to 2 (two).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
 		public static StringBuilder AppendFormatLine(
@@ -257,8 +305,9 @@ namespace AdvancedStringBuilder
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of either of three arguments using a specified format provider.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of either of three arguments using a
+		/// specified format provider.
 		/// </summary>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
 		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
@@ -271,8 +320,9 @@ namespace AdvancedStringBuilder
 		/// of <paramref name="format"/> where any format specification is replaced by the string representation
 		/// of the corresponding object argument, and default line terminator.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
-		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
-		/// format item is less than 0 (zero), or greater than or equal to 3 (three).</exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to 3 (three).</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
 		public static StringBuilder AppendFormatLine(
@@ -302,9 +352,9 @@ namespace AdvancedStringBuilder
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of a corresponding argument in a parameter array using a specified format
-		/// provider.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of a corresponding argument in a
+		/// parameter array using a specified format provider.
 		/// </summary>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
 		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
@@ -315,9 +365,10 @@ namespace AdvancedStringBuilder
 		/// of <paramref name="format"/> where any format specification is replaced by the string representation
 		/// of the corresponding object argument, and default line terminator.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
-		/// <exception cref="FormatException"><paramref name="format"/> is invalid. -or- The index of a
-		/// format item is less than 0 (zero), or greater than or equal to the length of the args array.
-		/// </exception>
+		/// <exception cref="FormatException"><paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to the length of
+		/// the args array.</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
 		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
 		public static StringBuilder AppendFormatLine(
@@ -342,12 +393,55 @@ namespace AdvancedStringBuilder
 
 			return source;
 		}
+#if NET9_0_OR_GREATER
+
+		/// <summary>
+		/// Appends the string returned by processing a composite format string, which contains zero or more
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of a corresponding argument in a
+		/// parameter span using a specified format provider.
+		/// </summary>
+		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
+		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
+		/// <param name="format">A composite format string.</param>
+		/// <param name="args">A span of objects to format.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="format"/> is null.</exception>
+		/// <exception cref="FormatException">
+		/// <paramref name="format"/> is invalid.
+		/// -or-
+		/// The index of a format item is less than 0 (zero), or greater than or equal to the length of
+		/// the <paramref name="args"/> span.
+		/// </exception>
+		/// <exception cref="ArgumentOutOfRangeException">The length of the expanded string would exceed
+		/// <see cref="StringBuilder.MaxCapacity"/>.</exception>
+		public static StringBuilder AppendFormatLine(
+			this StringBuilder source,
+			IFormatProvider? provider,
+			[StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format,
+			params ReadOnlySpan<object?> args
+		)
+		{
+			if (source is null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			source
+				.AppendFormat(provider, format, args)
+				.AppendLine()
+				;
+
+			return source;
+		}
+#endif
 #if NET8_0_OR_GREATER
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of any of the arguments using a specified format provider.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of any of the arguments using a
+		/// specified format provider.
 		/// </summary>
 		/// <typeparam name="TArg0">The type of the first object to format.</typeparam>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
@@ -380,8 +474,9 @@ namespace AdvancedStringBuilder
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of any of the arguments using a specified format provider.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of any of the arguments using a
+		/// specified format provider.
 		/// </summary>
 		/// <typeparam name="TArg0">The type of the first object to format.</typeparam>
 		/// <typeparam name="TArg1">The type of the second object to format.</typeparam>
@@ -417,8 +512,9 @@ namespace AdvancedStringBuilder
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of any of the arguments using a specified format provider.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of any of the arguments using a
+		/// specified format provider.
 		/// </summary>
 		/// <typeparam name="TArg0">The type of the first object to format.</typeparam>
 		/// <typeparam name="TArg1">The type of the second object to format.</typeparam>
@@ -457,8 +553,9 @@ namespace AdvancedStringBuilder
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of any of the arguments using a specified format provider.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of any of the arguments using a
+		/// specified format provider.
 		/// </summary>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
 		/// <param name="provider">An object that supplies culture-specific formatting information.</param>
@@ -491,8 +588,9 @@ namespace AdvancedStringBuilder
 
 		/// <summary>
 		/// Appends the string returned by processing a composite format string, which contains zero or more
-		/// format items, with default line terminator to this instance. Each format item is replaced by the
-		/// string representation of any of the arguments using a specified format provider.
+		/// format items, with default line terminator to this instance.
+		/// Each format item is replaced by the string representation of any of the arguments using a
+		/// specified format provider.
 		/// </summary>
 		/// <param name="source">Instance of <see cref="StringBuilder"/>.</param>
 		/// <param name="provider">An object that supplies culture-specific formatting information.</param>

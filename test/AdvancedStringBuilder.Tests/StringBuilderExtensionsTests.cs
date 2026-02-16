@@ -92,6 +92,25 @@ namespace AdvancedStringBuilder.Tests
 		}
 
 		[Test]
+		public void AppendFormatLineWithFormatStringAndManyArguments()
+		{
+			// Arrange
+			var builder = new StringBuilder("Hello");
+
+			const string format = ", Foo {0} Baz {1} Bar {2} Foo {3} Baz {4}";
+			object[] args = ["Bar", "Foo", "Baz", "Bar", "..."];
+
+			string targetOutput = "Hello, Foo Bar Baz Foo Bar Baz Foo Bar Baz ..." + Environment.NewLine;
+
+			// Act
+			builder.AppendFormatLine(format, args);
+			string output = builder.ToString();
+
+			// Assert
+			Assert.AreEqual(targetOutput, output);
+		}
+
+		[Test]
 		public void AppendFormatLineWithProviderAndFormatStringAndOneArgument()
 		{
 			// Arrange
@@ -171,6 +190,26 @@ namespace AdvancedStringBuilder.Tests
 
 			// Act
 			builder.AppendFormatLine(provider, format, arg0, arg1, arg2, arg3);
+			string output = builder.ToString();
+
+			// Assert
+			Assert.AreEqual(targetOutput, output);
+		}
+
+		[Test]
+		public void AppendFormatLineWithProviderAndFormatStringAndManyArguments()
+		{
+			// Arrange
+			var builder = new StringBuilder();
+
+			IFormatProvider provider = CultureInfo.InvariantCulture;
+			const string format = "{0}, {1}, {2}, {3}, {4}";
+			object[] args = [1, 2, 3, 4, "..."];
+
+			string targetOutput = "1, 2, 3, 4, ..." + Environment.NewLine;
+
+			// Act
+			builder.AppendFormatLine(provider, format, args);
 			string output = builder.ToString();
 
 			// Assert
