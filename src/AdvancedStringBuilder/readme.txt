@@ -1,11 +1,11 @@
 ﻿
 
    --------------------------------------------------------------------------------
-                     README file for AdvancedStringBuilder v0.1.1
+                     README file for AdvancedStringBuilder v0.2.0
 
    --------------------------------------------------------------------------------
 
-           Copyright (c) 2018-2024 Andrey Taritsyn - http://www.taritsyn.ru
+           Copyright (c) 2018-2026 Andrey Taritsyn - http://www.taritsyn.ru
 
 
    ===========

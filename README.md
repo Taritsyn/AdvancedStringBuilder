@@ -1,4 +1,4 @@
-AdvancedStringBuilder
+AdvancedStringBuilder [![NuGet version](http://img.shields.io/nuget/v/AdvancedStringBuilder.svg)](https://www.nuget.org/packages/AdvancedStringBuilder/)  [![Download count](https://img.shields.io/nuget/dt/AdvancedStringBuilder.svg)](https://www.nuget.org/packages/AdvancedStringBuilder/)
 =====================
 
 Contains a simple implementation of the pool and extension methods for string builder.
